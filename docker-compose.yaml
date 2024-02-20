@@ -1,8 +1,5 @@
 version: '3.9'
 
-x-variables: &variables
-    us-east-1
-
 services:
   registrar-pinchazo-sorter-api:
     build:
@@ -26,22 +23,3 @@ services:
       - "4566:4566"
     volumes:
       - ./localstack-setup.sh:/etc/localstack/init/ready.d/script.sh
-
-#version: '3.0'
-#
-#services:
-#  localstack:
-#    image: localstack/localstack:latest
-#    environment:
-#      - SERVICES=sqs,sns
-#      - AWS_DEFAULT_REGION=eu-central-1
-#      - EDGE_PORT=4566
-#    ports:
-#      - '4566-4597:4566-4597'
-#    volumes:
-#      - "${TMPDIR:-/tmp/localstack}:/tmp/localstack"
-#      - "/var/run/docker.sock:/var/run/docker.sock"
-
-
-
-#awslocal sqs send-message --queue-url http://sqs.us-east-1.localhost.localstack.cloud:4566/000000000000/registrar-pinchazo-sorter-queue --message-body "Hello World"
